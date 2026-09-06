@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CropApp - Recommendation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">🌱</div>
+
+    <h1>Your Farm Recommendation</h1>
+
+
+    <!-- CROP -->
+
+    <div class="result-card">
+
+        <h2>🌾 Recommended Crop</h2>
+
+        <div class="recommendation">
+            {{ crop }}
+        </div>
+
+        {% if mode == "region" %}
+
+        <p>
+            📍 {{ district }}, {{ state }}
+        </p>
+
+        {% else %}
+
+        <p>
+            Based on your soil and environmental values.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- WEATHER -->
+
+    {% if weather %}
+
+    <div class="result-card">
+
+        <h2>🌦️ Current Weather</h2>
+
+        <p>
+            🌡️ Temperature:
+            <strong>{{ weather.temperature }} °C</strong>
+        </p>
+
+        <p>
+            💧 Humidity:
+            <strong>{{ weather.humidity }}%</strong>
+        </p>
+
+        <p>
+            🌧️ Rainfall:
+            <strong>{{ weather.rainfall }} mm</strong>
+        </p>
+
+        <p>
+            ☁️ Condition:
+            <strong>{{ weather.description }}</strong>
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- FERTILIZER -->
+
+    <div class="result-card">
+
+        <h2>🌱 Fertilizer Guidance</h2>
+
+        {% if fertilizer_options %}
+
+            {% for item in fertilizer_options %}
+
+            <div class="fertilizer-item">
+
+                <h3>
+                    🧪 {{ item.nutrient }}
+                </h3>
+
+                <p>
+                    <strong>Status:</strong>
+                    {{ item.status }}
+                </p>
+
+                <p>
+                    <strong>Recommended Fertilizer:</strong>
+                    {{ item.fertilizer }}
+                </p>
+
+                <p>
+                    <strong>Why:</strong>
+                    {{ item.reason }}
+                </p>
+
+                <p>
+                    <strong>Benefit:</strong>
+                    {{ item.benefit }}
+                </p>
+
+                <p>
+                    <strong>Action:</strong>
+                    {{ item.action }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>
+                No fertilizer recommendation available.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- INFORMATION -->
+
+    <div class="info">
+
+        <strong>⚠️ Important</strong>
+
+        <p>
+            This is a development version.
+            Exact fertilizer quantity should be based
+            on a soil test and validated agricultural
+            recommendations.
+        </p>
+
+    </div>
+
+
+    <a href="/" class="back">
+        ← Start Again
+    </a>
+
+</div>
+
+</body>
+
+</html>

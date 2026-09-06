@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f8f3;
+    color: #243024;
+}
+
+.container {
+    width: 92%;
+    max-width: 650px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.logo {
+    font-size: 55px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    margin: 5px 0;
+    font-size: 34px;
+}
+
+.subtitle {
+    color: #667366;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    text-decoration: none;
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #dfe8df;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    color: #243024;
+    transition: 0.2s;
+}
+
+.menu-button:hover {
+    transform: translateY(-2px);
+}
+
+.menu-icon {
+    font-size: 32px;
+    width: 55px;
+    text-align: center;
+}
+
+.menu-text {
+    flex: 1;
+    padding-left: 12px;
+}
+
+.menu-text strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.menu-text small {
+    color: #718071;
+    font-size: 13px;
+}
+
+.arrow {
+    font-size: 25px;
+    color: #718071;
+}
+
+.info {
+    margin-top: 25px;
+    padding: 18px;
+    background: white;
+    border-radius: 15px;
+    border: 1px solid #dfe8df;
+}
+
+.info p {
+    color: #667366;
+    line-height: 1.5;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0 18px;
+    border: 1px solid #ccd8cc;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.result-card {
+    background: white;
+    padding: 20px;
+    margin: 18px 0;
+    border-radius: 16px;
+    border: 1px solid #dfe8df;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.recommendation {
+    font-size: 27px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.fertilizer-item {
+    padding: 12px;
+    margin: 10px 0;
+    background: #f4f8f3;
+    border-radius: 10px;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #426442;
+}
+
+@media (max-width: 500px) {
+
+    .container {
+        margin: 25px auto;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .menu-button {
+        padding: 16px;
+    }
+
+    .menu-icon {
+        font-size: 27px;
+        width: 45px;
+    }
+
+}

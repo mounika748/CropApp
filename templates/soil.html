@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropApp - Soil Values</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🧪 Soil Information</h1>
+
+    <p class="subtitle">
+        Enter your soil test values
+    </p>
+
+    <form method="POST">
+
+        <label>Nitrogen (N)</label>
+        <input type="number" name="nitrogen" step="any" required>
+
+        <label>Phosphorus (P)</label>
+        <input type="number" name="phosphorus" step="any" required>
+
+        <label>Potassium (K)</label>
+        <input type="number" name="potassium" step="any" required>
+
+        <label>Soil pH</label>
+        <input type="number" name="ph" step="0.1" min="0" max="14" required>
+
+        <label>Temperature (°C)</label>
+        <input type="number" name="temperature" step="0.1" required>
+
+        <label>Humidity (%)</label>
+        <input type="number" name="humidity" step="0.1" min="0" max="100" required>
+
+        <label>Rainfall (mm)</label>
+        <input type="number" name="rainfall" step="0.1" min="0" required>
+
+        <button type="submit">Get Recommendation 🌱</button>
+
+    </form>
+
+    <a href="/" class="back">← Back</a>
+
+</div>
+
+</body>
+</html>

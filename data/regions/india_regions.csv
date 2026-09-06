@@ -1,0 +1,19 @@
+state,district,soil_type,water_availability
+Andhra Pradesh,Krishna,Alluvial,High
+Andhra Pradesh,Guntur,Black Soil,High
+Andhra Pradesh,Kurnool,Black Soil,Medium
+Andhra Pradesh,Anantapur,Red Soil,Low
+Telangana,Warangal,Red Soil,Medium
+Telangana,Nizamabad,Black Soil,High
+Telangana,Karimnagar,Red Soil,Medium
+Tamil Nadu,Thanjavur,Alluvial,High
+Tamil Nadu,Coimbatore,Red Soil,Medium
+Tamil Nadu,Madurai,Red Soil,Medium
+Karnataka,Mysuru,Red Soil,Medium
+Karnataka,Belagavi,Black Soil,Medium
+Karnataka,Mandya,Alluvial,High
+Kerala,Thrissur,Laterite,High
+Kerala,Palakkad,Alluvial,High
+Maharashtra,Nashik,Black Soil,Medium
+Maharashtra,Pune,Black Soil,Medium
+Maharashtra,Nagpur,Black Soil,Medium

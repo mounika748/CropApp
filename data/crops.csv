@@ -1,0 +1,17 @@
+crop,nitrogen,phosphorus,potassium,temperature,humidity,rainfall,ph
+rice,90,42,43,25,80,200,6.5
+maize,80,40,40,24,65,150,6.5
+chickpea,40,60,80,20,55,80,7.0
+kidneybeans,20,60,20,20,60,100,6.5
+pigeonpeas,20,60,20,27,60,120,6.5
+mothbeans,20,40,20,30,50,60,7.0
+mungbean,20,40,20,28,65,80,7.0
+blackgram,40,60,20,27,65,80,7.0
+lentil,20,60,20,22,60,50,6.5
+pomegranate,10,10,40,25,45,80,6.5
+banana,100,75,50,27,80,200,6.0
+mango,20,20,30,27,50,100,6.5
+grapes,20,125,200,24,70,80,6.5
+watermelon,100,50,50,27,70,50,6.5
+muskmelon,100,50,50,28,65,40,6.5
+apple,20,125,200,20,60,100,6.5

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CropApp - Weather</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        🌦️
+    </div>
+
+
+    <h1>
+        Farm Weather
+    </h1>
+
+
+    <p class="subtitle">
+        Get live weather information for your farm
+    </p>
+
+
+    <button
+        type="button"
+        onclick="getWeather()">
+
+        📍 Use My Location
+
+    </button>
+
+
+    <div class="result-card">
+
+        <h2 id="status">
+            Ready
+        </h2>
+
+
+        <p id="result">
+            Tap "Use My Location"
+            to get your current weather.
+        </p>
+
+    </div>
+
+
+    <a href="/" class="back">
+
+        ← Back to CropApp
+
+    </a>
+
+</div>
+
+
+
+<script>
+
+function getWeather() {
+
+    const status =
+        document.getElementById("status");
+
+    const result =
+        document.getElementById("result");
+
+
+    status.innerText =
+        "📍 Getting your location...";
+
+
+    result.innerText =
+        "Please allow location permission.";
+
+
+    if (!navigator.geolocation) {
+
+        status.innerText =
+            "❌ Location not supported";
+
+        result.innerText =
+            "Your browser does not support location services.";
+
+        return;
+    }
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const latitude =
+                position.coords.latitude;
+
+            const longitude =
+                position.coords.longitude;
+
+
+            status.innerText =
+                "✅ Location found!";
+
+
+            result.innerText =
+                "🌦️ Getting weather information...";
+
+
+            fetch(
+                "/weather-data?latitude="
+                + encodeURIComponent(latitude)
+                + "&longitude="
+                + encodeURIComponent(longitude)
+            )
+
+            .then(function(response) {
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Server error "
+                        + response.status
+                    );
+
+                }
+
+                return response.json();
+
+            })
+
+
+            .then(function(data) {
+
+                if (data.error) {
+
+                    status.innerText =
+                        "⚠️ Weather unavailable";
+
+                    result.innerText =
+                        data.error;
+
+                    return;
+                }
+
+
+                status.innerText =
+                    "🌦️ Current Weather";
+
+
+                result.innerHTML =
+
+                    "🌡️ Temperature: <b>"
+                    + data.temperature
+                    + " °C</b><br><br>"
+
+                    + "💧 Humidity: <b>"
+                    + data.humidity
+                    + "%</b><br><br>"
+
+                    + "🌧️ Rainfall: <b>"
+                    + data.rainfall
+                    + " mm</b><br><br>"
+
+                    + "☁️ Condition: <b>"
+                    + data.description
+                    + "</b>";
+
+            })
+
+
+            .catch(function(error) {
+
+                status.innerText =
+                    "❌ Weather connection failed";
+
+
+                result.innerText =
+                    error.message;
+
+            });
+
+        },
+
+
+        function(error) {
+
+            status.innerText =
+                "❌ Location failed";
+
+
+            if (error.code === 1) {
+
+                result.innerText =
+                    "Location permission was denied.";
+
+            }
+
+            else if (error.code === 2) {
+
+                result.innerText =
+                    "Your device could not determine your location.";
+
+            }
+
+            else if (error.code === 3) {
+
+                result.innerText =
+                    "Location request timed out. Try again.";
+
+            }
+
+            else {
+
+                result.innerText =
+                    "Unable to get your location.";
+
+            }
+
+        },
+
+
+        {
+
+            enableHighAccuracy: false,
+
+            timeout: 30000,
+
+            maximumAge: 60000
+
+        }
+
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

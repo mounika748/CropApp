@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CropApp - Fertilizer Recommendation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">🌾</div>
+
+    <h1>Fertilizer Recommendation</h1>
+
+    <p class="subtitle">
+        Smart NPK-based fertilizer guidance
+    </p>
+
+    <form method="POST" action="/fertilizer">
+
+        <label>Nitrogen (N)</label>
+
+        <input
+            type="number"
+            name="nitrogen"
+            step="0.01"
+            placeholder="Enter Nitrogen value"
+            required
+        >
+
+        <label>Phosphorus (P)</label>
+
+        <input
+            type="number"
+            name="phosphorus"
+            step="0.01"
+            placeholder="Enter Phosphorus value"
+            required
+        >
+
+        <label>Potassium (K)</label>
+
+        <input
+            type="number"
+            name="potassium"
+            step="0.01"
+            placeholder="Enter Potassium value"
+            required
+        >
+
+        <button type="submit">
+            🌱 Analyze Soil
+        </button>
+
+    </form>
+
+
+    {% if recommendations %}
+
+        <div class="info">
+
+            <strong>🌱 Fertilizer Analysis</strong>
+
+            <p>
+                Your soil nutrient condition and recommended
+                fertilizer are shown below.
+            </p>
+
+        </div>
+
+
+        {% for item in recommendations %}
+
+            <div class="menu-button">
+
+                <div class="menu-icon">
+                    🧪
+                </div>
+
+                <div class="menu-text">
+
+                    <strong>
+                        {{ item.get("nutrient", "Nutrient") }}
+                    </strong>
+
+                    <small>
+                        <b>Status:</b>
+                        {{ item.get("status", "Not available") }}
+                    </small>
+
+                    <small>
+                        <b>Recommended Fertilizer:</b>
+                        {{ item.get("fertilizer", "No recommendation available") }}
+                    </small>
+
+                    <small>
+                        <b>Why:</b>
+                        {{ item.get("reason", "No information available.") }}
+                    </small>
+
+                    <small>
+                        <b>Benefit:</b>
+                        {{ item.get("benefit", "No information available.") }}
+                    </small>
+
+                    <small>
+                        <b>Action:</b>
+                        {{ item.get("action", "Follow appropriate soil management.") }}
+                    </small>
+
+                </div>
+
+                <div class="arrow">
+                    ✓
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <a href="/" class="back">
+        ← Back to CropApp
+    </a>
+
+</div>
+
+</body>
+
+</html>

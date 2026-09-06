@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CropApp - Farm Information</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">📍</div>
+
+    <h1>Farm Information</h1>
+
+    <p class="subtitle">
+        Don't know your soil values? No problem.
+    </p>
+
+    <button type="button" onclick="getLocation()">
+        📍 Use My Location
+    </button>
+
+    <p id="locationStatus"></p>
+
+    <form method="POST">
+
+        <input type="hidden"
+               name="latitude"
+               id="latitude">
+
+        <input type="hidden"
+               name="longitude"
+               id="longitude">
+
+
+        <label>State</label>
+
+        <select name="state" required>
+
+            <option value="">
+                Select State
+            </option>
+
+            <option>Andhra Pradesh</option>
+            <option>Telangana</option>
+            <option>Tamil Nadu</option>
+            <option>Karnataka</option>
+            <option>Kerala</option>
+            <option>Maharashtra</option>
+            <option>Other</option>
+
+        </select>
+
+
+        <label>District</label>
+
+        <input
+            type="text"
+            name="district"
+            placeholder="Enter district"
+            required
+        >
+
+
+        <label>Soil Type</label>
+
+        <select name="soil_type" required>
+
+            <option value="">
+                Select soil type
+            </option>
+
+            <option>Sandy</option>
+            <option>Clay</option>
+            <option>Loamy</option>
+            <option>Black Soil</option>
+            <option>Red Soil</option>
+            <option>Don't Know</option>
+
+        </select>
+
+
+        <label>Water Availability</label>
+
+        <select name="water" required>
+
+            <option value="">
+                Select water availability
+            </option>
+
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+
+        </select>
+
+
+        <label>Previous Crop</label>
+
+        <input
+            type="text"
+            name="previous_crop"
+            placeholder="Example: Rice"
+        >
+
+
+        <button type="submit">
+            Get Recommendation 🌱
+        </button>
+
+    </form>
+
+
+    <a href="/" class="back">
+        ← Back
+    </a>
+
+</div>
+
+
+<script>
+
+function getLocation() {
+
+    const status =
+        document.getElementById("locationStatus");
+
+    if (!navigator.geolocation) {
+
+        status.innerText =
+            "Location is not supported by this device.";
+
+        return;
+    }
+
+    status.innerText =
+        "Getting your location...";
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const latitude =
+                position.coords.latitude;
+
+            const longitude =
+                position.coords.longitude;
+
+
+            document.getElementById("latitude").value =
+                latitude;
+
+            document.getElementById("longitude").value =
+                longitude;
+
+
+            status.innerText =
+                "Location detected ✓";
+
+        },
+
+        function() {
+
+            status.innerText =
+                "Location permission was not allowed.";
+
+        }
+
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
