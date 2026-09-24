@@ -10,8 +10,7 @@
 
     <title>CropApp - Recommendation</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 
 </head>
 
@@ -31,29 +30,29 @@
         <h2>🌾 Recommended Crop</h2>
 
         <div class="recommendation">
-            {{ crop }}
+            <%= crop %>
         </div>
 
-        {% if mode == "region" %}
+        <% if (mode === "region") { %>
 
         <p>
-            📍 {{ district }}, {{ state }}
+            📍 <%= district %>, <%= state %>
         </p>
 
-        {% else %}
+        <% } else { %>
 
         <p>
             Based on your soil and environmental values.
         </p>
 
-        {% endif %}
+        <% } %>
 
     </div>
 
 
     <!-- WEATHER -->
 
-    {% if weather %}
+    <% if (typeof weather !== 'undefined' && weather && !weather.error) { %>
 
     <div class="result-card">
 
@@ -61,27 +60,27 @@
 
         <p>
             🌡️ Temperature:
-            <strong>{{ weather.temperature }} °C</strong>
+            <strong><%= weather.temperature %> °C</strong>
         </p>
 
         <p>
             💧 Humidity:
-            <strong>{{ weather.humidity }}%</strong>
+            <strong><%= weather.humidity %>%</strong>
         </p>
 
         <p>
             🌧️ Rainfall:
-            <strong>{{ weather.rainfall }} mm</strong>
+            <strong><%= weather.rainfall %> mm</strong>
         </p>
 
         <p>
             ☁️ Condition:
-            <strong>{{ weather.description }}</strong>
+            <strong><%= weather.description %></strong>
         </p>
 
     </div>
 
-    {% endif %}
+    <% } %>
 
 
     <!-- FERTILIZER -->
@@ -90,52 +89,52 @@
 
         <h2>🌱 Fertilizer Guidance</h2>
 
-        {% if fertilizer_options %}
+        <% if (typeof fertilizer_options !== 'undefined' && fertilizer_options && fertilizer_options.length > 0) { %>
 
-            {% for item in fertilizer_options %}
+            <% fertilizer_options.forEach(function(item) { %>
 
             <div class="fertilizer-item">
 
                 <h3>
-                    🧪 {{ item.nutrient }}
+                    🧪 <%= item.nutrient %>
                 </h3>
 
                 <p>
                     <strong>Status:</strong>
-                    {{ item.status }}
+                    <%= item.status %>
                 </p>
 
                 <p>
                     <strong>Recommended Fertilizer:</strong>
-                    {{ item.fertilizer }}
+                    <%= item.fertilizer %>
                 </p>
 
                 <p>
                     <strong>Why:</strong>
-                    {{ item.reason }}
+                    <%= item.reason %>
                 </p>
 
                 <p>
                     <strong>Benefit:</strong>
-                    {{ item.benefit }}
+                    <%= item.benefit %>
                 </p>
 
                 <p>
                     <strong>Action:</strong>
-                    {{ item.action }}
+                    <%= item.action %>
                 </p>
 
             </div>
 
-            {% endfor %}
+            <% }); %>
 
-        {% else %}
+        <% } else { %>
 
             <p>
                 No fertilizer recommendation available.
             </p>
 
-        {% endif %}
+        <% } %>
 
     </div>
 

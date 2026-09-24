@@ -1,5 +1,0 @@
-Flask
-pandas
-requests
-python-dotenv
-gunicorn

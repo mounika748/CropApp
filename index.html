@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 20h10'/><path d='M10 20c5.5-2.5.8-6.4 3-10'/><path d='M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z'/><path d='M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>CropApp – AI Crop & Fertilizer Recommendation System</title>
+    <meta name="description" content="AI-powered crop, fertilizer, soil-health and weather assistance for farmers." />
+    
+    <meta property="og:title" content="CropApp – AI Crop & Fertilizer Recommendation System" />
+    <meta property="og:description" content="AI-powered crop, fertilizer, soil-health and weather assistance for farmers." />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts with Indian scripts support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-neutral-100 text-neutral-900 min-h-screen">
+    <div id="root">
+      <!-- CropApp Initial Loading Screen (Replaced automatically upon React hydration) -->
+      <div id="cropapp-loading-screen" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #f7faf7; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; padding: 1.5rem; text-align: center;">
+        <div style="width: 68px; height: 68px; border-radius: 20px; background: linear-gradient(135deg, #047857 0%, #065f46 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 24px -4px rgba(4, 120, 87, 0.35); margin-bottom: 1.5rem; animation: cropapp-bounce 2s infinite ease-in-out;">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#d1fae5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 20h10"/>
+            <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+            <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+            <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+          </svg>
+        </div>
+        <h1 style="font-size: 1.85rem; font-weight: 900; letter-spacing: -0.03em; color: #064e3b; margin: 0 0 0.4rem 0;">CROPAPP</h1>
+        <p style="font-size: 0.95rem; font-weight: 600; color: #059669; margin: 0 0 1.75rem 0; letter-spacing: -0.01em;">AI Crop &amp; Fertilizer Recommendation System</p>
+        <div style="width: 160px; height: 5px; background: #d1fae5; border-radius: 9999px; overflow: hidden; position: relative;">
+          <div style="width: 45%; height: 100%; background: #059669; border-radius: 9999px; position: absolute; left: 0; animation: cropapp-progress 1.3s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;"></div>
+        </div>
+        <span style="font-size: 0.75rem; color: #6b7280; margin-top: 1rem; font-weight: 500;">Cultivating intelligent farm decisions...</span>
+        <style>
+          @keyframes cropapp-progress {
+            0% { left: 0%; width: 25%; }
+            100% { left: 75%; width: 45%; }
+          }
+          @keyframes cropapp-bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-6px) scale(1.03); }
+          }
+        </style>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

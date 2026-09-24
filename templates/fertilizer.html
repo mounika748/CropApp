@@ -10,8 +10,7 @@
 
     <title>CropApp - Fertilizer Recommendation</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 
 </head>
 
@@ -36,6 +35,7 @@
             name="nitrogen"
             step="0.01"
             placeholder="Enter Nitrogen value"
+            value="<%= typeof nitrogen !== 'undefined' && nitrogen !== null ? nitrogen : '' %>"
             required
         >
 
@@ -46,6 +46,7 @@
             name="phosphorus"
             step="0.01"
             placeholder="Enter Phosphorus value"
+            value="<%= typeof phosphorus !== 'undefined' && phosphorus !== null ? phosphorus : '' %>"
             required
         >
 
@@ -56,6 +57,7 @@
             name="potassium"
             step="0.01"
             placeholder="Enter Potassium value"
+            value="<%= typeof potassium !== 'undefined' && potassium !== null ? potassium : '' %>"
             required
         >
 
@@ -66,7 +68,7 @@
     </form>
 
 
-    {% if recommendations %}
+    <% if (typeof recommendations !== 'undefined' && recommendations && recommendations.length > 0) { %>
 
         <div class="info">
 
@@ -80,7 +82,7 @@
         </div>
 
 
-        {% for item in recommendations %}
+        <% recommendations.forEach(function(item) { %>
 
             <div class="menu-button">
 
@@ -91,32 +93,32 @@
                 <div class="menu-text">
 
                     <strong>
-                        {{ item.get("nutrient", "Nutrient") }}
+                        <%= item.nutrient || "Nutrient" %>
                     </strong>
 
                     <small>
                         <b>Status:</b>
-                        {{ item.get("status", "Not available") }}
+                        <%= item.status || "Not available" %>
                     </small>
 
                     <small>
                         <b>Recommended Fertilizer:</b>
-                        {{ item.get("fertilizer", "No recommendation available") }}
+                        <%= item.fertilizer || "No recommendation available" %>
                     </small>
 
                     <small>
                         <b>Why:</b>
-                        {{ item.get("reason", "No information available.") }}
+                        <%= item.reason || "No information available." %>
                     </small>
 
                     <small>
                         <b>Benefit:</b>
-                        {{ item.get("benefit", "No information available.") }}
+                        <%= item.benefit || "No information available." %>
                     </small>
 
                     <small>
                         <b>Action:</b>
-                        {{ item.get("action", "Follow appropriate soil management.") }}
+                        <%= item.action || "Follow appropriate soil management." %>
                     </small>
 
                 </div>
@@ -127,9 +129,9 @@
 
             </div>
 
-        {% endfor %}
+        <% }); %>
 
-    {% endif %}
+    <% } %>
 
 
     <a href="/" class="back">

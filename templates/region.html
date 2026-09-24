@@ -9,8 +9,7 @@
 
     <title>CropApp - Farm Information</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
@@ -31,7 +30,7 @@
 
     <p id="locationStatus"></p>
 
-    <form method="POST">
+    <form method="POST" action="/region">
 
         <input type="hidden"
                name="latitude"

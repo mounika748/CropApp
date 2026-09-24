@@ -1,0 +1,8 @@
+{
+  "name": "CropApp",
+  "description": "Smart Crop & Fertilizer Recommendation web application providing crop suggestions, soil health analysis, and weather information for farms.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
